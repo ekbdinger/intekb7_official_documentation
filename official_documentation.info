@@ -2,6 +2,7 @@ name = Official Documentation
 description = content from myecw
 core = 7.x
 package = Documentation 2.0
+php = 5.2.4
 version = 7.x-1.0
 project = official_documentation
 dependencies[] = date
