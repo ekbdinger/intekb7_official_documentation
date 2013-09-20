@@ -21,7 +21,7 @@ function official_documentation_taxonomy_default_vocabularies() {
       'name' => 'Version',
       'machine_name' => 'vocabulary_10',
       'description' => '',
-      'hierarchy' => 1,
+      'hierarchy' => 0,
       'module' => 'taxonomy',
       'weight' => 0,
     ),

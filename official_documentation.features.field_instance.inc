@@ -161,7 +161,7 @@ function official_documentation_field_default_field_instances() {
     'settings' => array(
       'description_field' => 0,
       'file_directory' => 'documentation',
-      'file_extensions' => 'pdf doc docx',
+      'file_extensions' => 'pdf doc docx xls zip',
       'max_filesize' => '',
       'user_register_form' => FALSE,
     ),

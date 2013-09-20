@@ -22,7 +22,7 @@ function official_documentation_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'documentation_all';
+  $handler->display->display_options['title'] = 'All Documentation';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'role';
   $handler->display->display_options['access']['role'] = array(
@@ -32,12 +32,13 @@ function official_documentation_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '100';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '0';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
+    'counter' => 'counter',
     'title' => 'title',
     'field_doc_date' => 'field_doc_date',
     'field_doc_file' => 'field_doc_file',
@@ -46,8 +47,13 @@ function official_documentation_views_default_views() {
   );
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
+    'counter' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
     'title' => array(
-      'sortable' => 0,
+      'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
@@ -61,8 +67,8 @@ function official_documentation_views_default_views() {
       'empty_column' => 0,
     ),
     'field_doc_file' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
+      'sortable' => 1,
+      'default_sort_order' => 'desc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
@@ -86,16 +92,26 @@ function official_documentation_views_default_views() {
   $handler->display->display_options['relationships']['field_doc_file_fid']['id'] = 'field_doc_file_fid';
   $handler->display->display_options['relationships']['field_doc_file_fid']['table'] = 'field_data_field_doc_file';
   $handler->display->display_options['relationships']['field_doc_file_fid']['field'] = 'field_doc_file_fid';
+  /* Field: Global: View result counter */
+  $handler->display->display_options['fields']['counter']['id'] = 'counter';
+  $handler->display->display_options['fields']['counter']['table'] = 'views';
+  $handler->display->display_options['fields']['counter']['field'] = 'counter';
+  $handler->display->display_options['fields']['counter']['label'] = '';
+  $handler->display->display_options['fields']['counter']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['counter']['alter']['text'] = '<strong>[counter])</strong>';
+  $handler->display->display_options['fields']['counter']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['counter']['counter_start'] = '1';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Date */
+  /* Field: Content: Last Updated */
   $handler->display->display_options['fields']['field_doc_date']['id'] = 'field_doc_date';
   $handler->display->display_options['fields']['field_doc_date']['table'] = 'field_data_field_doc_date';
   $handler->display->display_options['fields']['field_doc_date']['field'] = 'field_doc_date';
+  $handler->display->display_options['fields']['field_doc_date']['label'] = 'Date';
   $handler->display->display_options['fields']['field_doc_date']['settings'] = array(
     'format_type' => 'short',
     'fromto' => 'both',
@@ -126,14 +142,13 @@ function official_documentation_views_default_views() {
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = '0';
+  $handler->display->display_options['filters']['status']['value'] = 'All';
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['exposed'] = TRUE;
   $handler->display->display_options['filters']['status']['expose']['operator_id'] = '';
   $handler->display->display_options['filters']['status']['expose']['label'] = 'Published';
   $handler->display->display_options['filters']['status']['expose']['operator'] = 'status_op';
   $handler->display->display_options['filters']['status']['expose']['identifier'] = 'status';
-  $handler->display->display_options['filters']['status']['expose']['required'] = TRUE;
   $handler->display->display_options['filters']['status']['expose']['remember_roles'] = array(
     2 => '2',
     3 => 0,
@@ -184,6 +199,7 @@ function official_documentation_views_default_views() {
     50 => 0,
     51 => 0,
     52 => 0,
+    53 => 0,
   );
   /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
@@ -351,10 +367,11 @@ function official_documentation_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Content: Date */
+  /* Field: Content: Last Updated */
   $handler->display->display_options['fields']['field_doc_date']['id'] = 'field_doc_date';
   $handler->display->display_options['fields']['field_doc_date']['table'] = 'field_data_field_doc_date';
   $handler->display->display_options['fields']['field_doc_date']['field'] = 'field_doc_date';
+  $handler->display->display_options['fields']['field_doc_date']['label'] = 'Date';
   $handler->display->display_options['fields']['field_doc_date']['settings'] = array(
     'format_type' => 'short',
     'fromto' => 'both',
@@ -466,10 +483,11 @@ function official_documentation_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Content: Date */
+  /* Field: Content: Last Updated */
   $handler->display->display_options['fields']['field_doc_date']['id'] = 'field_doc_date';
   $handler->display->display_options['fields']['field_doc_date']['table'] = 'field_data_field_doc_date';
   $handler->display->display_options['fields']['field_doc_date']['field'] = 'field_doc_date';
+  $handler->display->display_options['fields']['field_doc_date']['label'] = 'Date';
   $handler->display->display_options['fields']['field_doc_date']['settings'] = array(
     'format_type' => 'short',
     'fromto' => 'both',
@@ -524,7 +542,7 @@ function official_documentation_views_default_views() {
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = 'File';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="[uri]" target="_blank"><img alt="" src="/modules/file/icons/application-pdf.png" /></a>';
-  /* Field: Content: Date */
+  /* Field: Content: Last Updated */
   $handler->display->display_options['fields']['field_doc_date']['id'] = 'field_doc_date';
   $handler->display->display_options['fields']['field_doc_date']['table'] = 'field_data_field_doc_date';
   $handler->display->display_options['fields']['field_doc_date']['field'] = 'field_doc_date';
@@ -590,7 +608,7 @@ function official_documentation_views_default_views() {
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = 'File';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="[uri]" target="_blank"><img alt="" src="/modules/file/icons/application-pdf.png" /></a>';
-  /* Field: Content: Date */
+  /* Field: Content: Last Updated */
   $handler->display->display_options['fields']['field_doc_date']['id'] = 'field_doc_date';
   $handler->display->display_options['fields']['field_doc_date']['table'] = 'field_data_field_doc_date';
   $handler->display->display_options['fields']['field_doc_date']['field'] = 'field_doc_date';
