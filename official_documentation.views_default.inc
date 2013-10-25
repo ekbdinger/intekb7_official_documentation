@@ -212,7 +212,6 @@ function official_documentation_views_default_views() {
   $handler->display->display_options['filters']['field_doc_product_tid']['id'] = 'field_doc_product_tid';
   $handler->display->display_options['filters']['field_doc_product_tid']['table'] = 'field_data_field_doc_product';
   $handler->display->display_options['filters']['field_doc_product_tid']['field'] = 'field_doc_product_tid';
-  $handler->display->display_options['filters']['field_doc_product_tid']['value'] = '';
   $handler->display->display_options['filters']['field_doc_product_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_doc_product_tid']['expose']['operator_id'] = 'field_doc_product_tid_op';
   $handler->display->display_options['filters']['field_doc_product_tid']['expose']['label'] = 'Product (field_doc_product)';
@@ -268,9 +267,11 @@ function official_documentation_views_default_views() {
     50 => 0,
     51 => 0,
     52 => 0,
+    53 => 0,
   );
   $handler->display->display_options['filters']['field_doc_product_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_doc_product_tid']['vocabulary'] = 'product';
+  $handler->display->display_options['filters']['field_doc_product_tid']['hierarchy'] = 1;
   /* Filter criterion: Content: Version (field_doc_version) */
   $handler->display->display_options['filters']['field_doc_version_tid']['id'] = 'field_doc_version_tid';
   $handler->display->display_options['filters']['field_doc_version_tid']['table'] = 'field_data_field_doc_version';

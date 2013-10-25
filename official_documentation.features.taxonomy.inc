@@ -13,7 +13,7 @@ function official_documentation_taxonomy_default_vocabularies() {
       'name' => 'Product',
       'machine_name' => 'product',
       'description' => '',
-      'hierarchy' => 0,
+      'hierarchy' => 1,
       'module' => 'taxonomy',
       'weight' => 0,
     ),
