@@ -18,7 +18,7 @@ function official_documentation_taxonomy_default_vocabularies() {
       'weight' => 0,
     ),
     'vocabulary_10' => array(
-      'name' => 'Version',
+      'name' => 'eCW Version',
       'machine_name' => 'vocabulary_10',
       'description' => '',
       'hierarchy' => 0,

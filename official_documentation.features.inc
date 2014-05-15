@@ -27,7 +27,7 @@ function official_documentation_views_api() {
 function official_documentation_node_info() {
   $items = array(
     'documentation_team' => array(
-      'name' => t('Documentation'),
+      'name' => t('Documentation old'),
       'base' => 'node_content',
       'description' => t('Official Documentation from the eCW documentation team'),
       'has_title' => '1',
